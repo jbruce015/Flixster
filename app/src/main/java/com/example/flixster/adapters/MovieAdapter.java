@@ -2,6 +2,8 @@ package com.example.flixster.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvOverview.setText(movie.getOverview());
             String imageUrl;
 
+
             //if phone is landscape
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 //then imageURL = landscape
@@ -80,8 +83,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 //else imageURL = poster image
                 imageUrl = movie.getPosterPath();
             }
+            Glide.with(context)
+                    .load("https://images.pexels.com/photos/4587982/pexels-photo-4587982.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=342/%s")
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(ivPoster);
 
-            Glide.with(context).load(imageUrl).into(ivPoster);
+
+            Glide.with(context)
+                    .load(imageUrl)
+                    .into(ivPoster);
+
+
+
+
+
+
+
 
         }
     }
